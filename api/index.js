@@ -4,6 +4,7 @@ const databaseConnection = require('./config/database')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const authRouter = require('./routes/authRoutes')
 const colorRouter = require('./routes/colorRoutes')
 const enquiryRouter = require('./routes/enqRoutes')
 const app = express();
@@ -19,7 +20,7 @@ app.use(cors())
 
 app.use('/api/color', colorRouter)
 app.use('/api/enq', enquiryRouter)
-//app.use('/api/user', authRouter)
+app.use('/api/user', authRouter)
 
 //* connect to the database
 databaseConnection()
